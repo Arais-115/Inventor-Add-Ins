@@ -1,0 +1,1 @@
+﻿iProperties.Value("Status", "Checked By") = ThisApplication.GeneralOptions.UserName

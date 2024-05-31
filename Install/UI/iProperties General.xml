@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSpecification xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>iProperties General</Name>
+  <Guid>0361869f-ee63-4f10-9bec-0af9be582d50</Guid>
+  <Items>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Part Number</Name>
+      <Guid>d8897dfd-4ea0-46b9-9db2-e8db6abcba9d</Guid>
+      <PropertyName>Part Number</PropertyName>
+      <PropertySetName>Project</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Stock Number</Name>
+      <Guid>56905cf1-fb8f-46c3-9172-8d3972d1dc00</Guid>
+      <PropertyName>Stock Number</PropertyName>
+      <PropertySetName>Project</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Company</Name>
+      <Guid>c233257f-846d-4708-923c-ec6efe1f7ccd</Guid>
+      <PropertyName>Company</PropertyName>
+      <PropertySetName>Summary</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Project</Name>
+      <Guid>ed47b80b-7f04-4fd8-a994-9ab4816e2ac3</Guid>
+      <PropertyName>Project</PropertyName>
+      <PropertySetName>Project</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Title</Name>
+      <Guid>912a707c-11b4-4aee-8c58-586d89adde43</Guid>
+      <PropertyName>Title</PropertyName>
+      <PropertySetName>Summary</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Job #</Name>
+      <Guid>49a88eb2-2741-4dc6-9ec9-7013158d0e29</Guid>
+      <PropertyName>Job #</PropertyName>
+      <PropertySetName>Custom</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Unit #</Name>
+      <Guid>1bb22a2c-7805-4b92-b715-85467b5232c4</Guid>
+      <PropertyName>Unit #</PropertyName>
+      <PropertySetName>Custom</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>AGG #</Name>
+      <Guid>8d692e31-8935-4800-8503-f73e4246f031</Guid>
+      <PropertyName>AGG #</PropertyName>
+      <PropertySetName>Custom</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Revision Number</Name>
+      <Guid>a07d9b2d-4a9a-4da8-a180-d0dd3e20e359</Guid>
+      <PropertyName>Revision Number</PropertyName>
+      <PropertySetName>Project</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="TextPropertyControlSpec">
+      <Name>Description</Name>
+      <Guid>01aa98bb-449b-4c4a-bd76-67adf798d6d6</Guid>
+      <PropertyName>Description</PropertyName>
+      <PropertySetName>Project</PropertySetName>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+      <Name>Change BOM Structure</Name>
+      <Guid>07a06112-8b1c-44d6-ac24-d5397be7331d</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+      <RuleName>BOMStructChange</RuleName>
+      <RuleButtonBehavior>CloseAndRunRule</RuleButtonBehavior>
+      <Path>BOMStructChange.iLogicVb</Path>
+    </UiElementSpec>
+  </Items>
+  <StyleAndSkinName>
+    <StyleName>Default</StyleName>
+  </StyleAndSkinName>
+  <AllowCustomization>true</AllowCustomization>
+  <PredefinedButtons>Done</PredefinedButtons>
+  <Modal>false</Modal>
+</FormSpecification>

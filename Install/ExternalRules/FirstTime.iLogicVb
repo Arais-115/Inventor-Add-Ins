@@ -1,0 +1,58 @@
+﻿Private Sub Main()
+Dim Filename As String
+Dim chk As String
+Dim res As String
+Dim oDoc As Document
+
+
+Dim oDDoc As DrawingDocument = ThisDrawing.Document
+Dim oMDoc As Document = ThisDrawing.ModelDocument
+Dim oMPath As String = IO.Path.GetFileNameWithoutExtension(oMDoc.FullFileName)
+Filename = ThisDoc.FileName(False)
+
+
+If String.IsNullOrEmpty(oMPath) Then
+	MessageBox.Show("In order to change, you must save the drawing first", "Please save first", MessageBoxButtons.OK)
+	Exit Sub
+Else If Len(oMPath) < 8 Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oMPath & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+Else If oMPath.Contains("-") = False Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oMPath & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End If
+
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+Try
+	prop = customPropertySet.Item("DetailFULL")
+	prop = customPropertySet.Item("DET#")
+	prop = customPropertySet.Item("OPP#")
+	prop = customPropertySet.Item("OPPFull")
+	prop = customPropertySet.Item("shn/OPP")
+	prop = customPropertySet.Item("Opposite Description")
+Catch
+	MessageBox.Show("Drawing not to Standard" & vbLf & "Missing custom iProperties", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End Try
+
+'On Error GoTo Resolve
+
+If String.IsNullOrEmpty(oMPath) = True Then
+	Exit Sub
+	Else	
+		iProperties.Value("Custom", "DetailFull") = oMPath
+'		suboMPath = oMPath.Substring(oMPath.Length - 4)
+		suboMPath = oMPath.Substring(InStrRev(oMPath, "-"))
+		iProperties.Value("Custom", "DET#") = suboMPath
+		iProperties.Value("Custom", "Shn/OPP") = "No"
+		iProperties.Value("Custom", "OPP#") = ""
+		iProperties.Value("Custom", "OPPFull") = ""
+		iProperties.Value("Custom", "Shn/OPP") = "No"
+		iLogicForm.ShowGlobal("Entry Form")
+End If
+
+'Resolve :
+'Exit Sub
+
+End Sub
+

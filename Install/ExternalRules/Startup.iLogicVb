@@ -1,0 +1,111 @@
+﻿Private Sub Main()
+Dim toolOrient As Char
+Dim oDoc As Document
+'Dim res As DialogResult
+'Dim oDDoc As DrawingDocument = ThisDrawing.Document
+Dim oMDoc As Document = ThisDrawing.ModelDocument
+Dim oMPath As String = IO.Path.GetFileNameWithoutExtension(oMDoc.FullFileName)
+Dim oppName As String
+Dim suboMPath As String
+Dim desc As String
+Dim subDesc As String
+If Len(oMPath) < 8 Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oMPath & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+Else If oMPath.Contains("-") = False Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oMPath & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End If
+
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+Try
+	prop = customPropertySet.Item("OPP#")
+	prop = customPropertySet.Item("OPPFull")
+	prop = customPropertySet.Item("DetailFULL")
+	prop = customPropertySet.Item("DET#")
+	prop = customPropertySet.Item("shn/OPP")
+	prop = customPropertySet.Item("Opposite Description")
+Catch
+	MessageBox.Show("Drawing not to Standard" & vbLf & "Missing custom iProperties", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End Try
+
+'On Error GoTo Resolve
+toolOrient = oMPath(oMPath.Length - 1)
+desc = oMDoc.PropertySets("Design Tracking Properties").Item("Description").Value
+
+If String.IsNullOrEmpty(oMPath) = True Then
+	Exit Sub
+	Else
+		If toolOrient = "s" Or toolOrient = "S" Then
+			iProperties.Value("Custom", "OPPFull") = "NONE"
+			iProperties.Value("Custom", "OPP#") = ""
+			iProperties.Value("Custom", "Shn/OPP") = "No"
+			iProperties.Value("Custom", "DrawingOPP") = ""
+			iProperties.Value("Custom", "DetailFull") = oMPath
+			suboMPath = oMPath.Substring(InStrRev(oMPath, "-"))
+			iProperties.Value("Custom", "DET#") = suboMPath
+			iProperties.Value("Custom", "Opposite Description") = ""
+			iLogicForm.ShowGlobal("Drawing Entry")
+			
+		Else If toolOrient = "l" Or toolOrient = "L" Then
+			oppName = oMPath.Substring(0, oMPath.Length - 1) & "R"
+			suboMPath = oMPath.Substring(InStrRev(oMPath, "-"))
+			subOppName = oppName.Substring(InStrRev(oppName, "-")) 
+			iProperties.Value("Custom", "OPPFull") = oppName 
+			iProperties.Value("Custom", "DetailFull") = oMPath
+			iProperties.Value("Custom", "DET#") =  suboMPath
+			iProperties.Value("Custom", "OPP#") = subOppName
+			iProperties.Value("Custom", "Shn/OPP") = "Yes"
+			
+			If desc.IndexOf("shn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 Then
+			   subDesc = Replace(desc, "shn", "OPP", 1, , CompareMethod.Text)
+			   iProperties.Value("Custom", "Opposite Description") = subDesc
+			Else If desc.IndexOf("shwn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 
+			   subDesc = Replace(desc, "shwn", "OPP", 1, , CompareMethod.Text)
+			   iProperties.Value("Custom", "Opposite Description") = subDesc
+			Else 
+				iProperties.Value("Custom", "Opposite Description") = desc
+			End If
+			iLogicForm.ShowGlobal("Drawing Entry")
+			
+		Else If toolOrient = "r" Or toolOrient = "R" Then
+			oppName = oMPath.Substring(0, oMPath.Length - 1) & "L"
+			suboMPath = oMPath.Substring(InStrRev(oMPath, "-"))
+			subOppName = oppName.Substring(InStrRev(oppName, "-")) 
+			'MessageBox.Show("oppName " & oppName & vbLf & " oMPath " & oMPath & vbLf & " suboMPath "& suboMPath & vbLf & " subOppName " & subOppName)
+		
+			iProperties.Value("Custom", "OPPFull") = oppName 
+			iProperties.Value("Custom", "DetailFull") = oMPath
+			iProperties.Value("Custom", "DET#") =  suboMPath
+			iProperties.Value("Custom", "OPP#") = subOppName
+			iProperties.Value("Custom", "Shn/OPP") = "Yes"
+			
+			If desc.IndexOf("shn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 Then
+			   subDesc = Replace(desc, "shn", "OPP", 1, , CompareMethod.Text)
+			   iProperties.Value("Custom", "Opposite Description") = subDesc
+			Else If desc.IndexOf("shwn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 
+			   subDesc = Replace(desc, "shwn", "OPP", 1, , CompareMethod.Text)
+			   iProperties.Value("Custom", "Opposite Description") = subDesc
+		    Else 
+				iProperties.Value("Custom", "Opposite Description") = desc
+			End If
+			iLogicForm.ShowGlobal("Drawing Entry")
+			
+		Else 
+'			res = MessageBox.Show("Tool orientation suffix not to standard" & vbLf & "Tool suffix should be S, L, or R" & vbLf & "Current suffix in " _
+'			& oMPath & " is " & toolOrient & vbLf & vbLf & "Do you wish to continue as a legacy job?", "Cannot Run Rule", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+'			MessageBox.Show("Tool orientation suffix not to standard" & vbLf & "Tool suffix should be S, L, or R" & vbLf & "Current suffix in " _
+'			& oMPath & " is " & toolOrient & vbLf & vbLf & "You may have to use a legacy template", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+			MessageBox.Show("Current naming scheme not to standard " & vbLf & "This is " & oMPath & vbLf & "If this is the old naming scheme, please use the Shown/OPP tab on Drawing_Entry", "Old Number Scheme", MessageBoxButtons.OK, MessageBoxIcon.Information)
+'			
+	End If
+End If
+
+'If res = DialogResult.Yes Then 
+'	iLogicVb.RunExternalRule("FirstTime")
+'End If
+
+
+End Sub
+

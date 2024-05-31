@@ -1,0 +1,45 @@
+﻿Sub Main()
+Dim Filename As String
+Dim Desc As String
+Dim subDesc As String
+
+Filename = ThisDoc.FileName(False)
+
+If String.IsNullOrEmpty(Filename) Then
+	MessageBox.Show("In order to change, you must save the drawing first", "Please save first", MessageBoxButtons.OK)
+	Exit Sub
+Else If Len(Filename) < 8 Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & Filename & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+Else If Filename.Contains("-") = False Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & Filename & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End If
+
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+Try
+	prop = customPropertySet.Item("DetailFULL")
+	prop = customPropertySet.Item("DET#")
+	prop = customPropertySet.Item("OPP#")
+	prop = customPropertySet.Item("OPPFull")
+	prop = customPropertySet.Item("shn/OPP")
+	prop = customPropertySet.Item("Opposite Description")
+Catch
+	MessageBox.Show("Drawing not to Standard" & vbLf & "Missing custom iProperties", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End Try
+
+'Desc = iProperties.Value("Custom", "Opposite Description")
+Desc = iProperties.Value("Project", "Description")
+
+'If Desc.IndexOf("shn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 And Desc.Length > 1 Then	
+iProperties.Value("Custom", "Opposite Description") = ""
+'End If
+
+iProperties.Value("Custom", "DetailFull") = Filename
+subFilename = Filename.Substring(InStrRev(Filename, "-"))
+iProperties.Value("Custom", "DET#") = subFilename 
+iProperties.Value("Custom", "Shn/OPP") = "No"
+iProperties.Value("Custom", "OPP#") = ""
+iProperties.Value("Custom", "OPPFull") = ""
+End Sub

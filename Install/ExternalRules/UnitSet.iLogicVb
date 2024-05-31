@@ -1,0 +1,33 @@
+﻿oUnit = InputRadioBox("Select a units of measure type", "Axis Standard", "Inch", True, "ilogic") 'get input from user
+
+If oUnit = True Then 'set to millimeter
+	oUOM_1 = UnitsTypeEnum.kMillimeterLengthUnits
+	UnitsTypeEnum.kMillimeterLengthUnits = '''''''''''''''''''''''''''
+	oUOM_1 = UnitsTypeEnum.kLbMassMassUnits
+	oUOM_1 = UnitsTypeEnum.kDegreeAngleUnits
+	oUOM_1 = UnitsTypeEnum.kSecondTimeUnits
+Else 'set to Inch
+	oUOM_1 = UnitsTypeEnum.kInchLengthUnits
+	oUOM_1 = UnitsTypeEnum.kLbMassMassUnits
+	oUOM_1 = UnitsTypeEnum.kDegreeAngleUnits
+	oUOM_1 = UnitsTypeEnum.kSecondTimeUnits            
+End If
+MessageBox.Show(oUOM_1)
+'Define the open document
+Dim openDoc As Document
+openDoc = ThisDoc.Document
+Dim docFile As Document 'Look at all of the files referenced in the open document
+
+For Each docFile In openDoc.AllReferencedDocuments
+	 MessageBox.Show("Test")
+     If docFile.DocumentType = kPartDocumentObject Then	'look at only part files     
+    	Dim FNamePos As Long 'format  file name 
+   		FNamePos = InStrRev(docFile.FullFileName, "\", -1)  
+		MessageBox.Show("Test")
+		Dim docFName As String 
+		docFName = Right(docFile.FullFileName, Len(docFile.FullFileName) - FNamePos) 'set length units       
+        docFile.UnitsOfMeasure.LengthUnits = oUOM_1
+        docFile.Rebuild  'rebuild to update the display
+     End If
+Next    
+iLogicVb.UpdateWhenDone = True

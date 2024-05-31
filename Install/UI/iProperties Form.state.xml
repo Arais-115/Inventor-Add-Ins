@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormStatePersist xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Size>
+    <Width>520</Width>
+    <Height>480</Height>
+  </Size>
+  <Location>
+    <X>633</X>
+    <Y>205</Y>
+  </Location>
+  <DipToPixelConversionFactors>
+    <WidthFactor>1</WidthFactor>
+    <HeightFactor>1</HeightFactor>
+  </DipToPixelConversionFactors>
+  <SplitterLocations />
+  <GroupExpansionStateList />
+  <TabGroupSelectedPageList />
+</FormStatePersist>

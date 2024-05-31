@@ -1,0 +1,9 @@
+﻿CurrentColourScheme = ThisApplication.ActiveColorScheme.Name
+
+If CurrentColourScheme = "High Contrast" Then
+    ThisApplication.ColorSchemes("Presentation").Activate
+Else
+    ThisApplication.ColorSchemes("High Contrast").Activate
+End If
+
+

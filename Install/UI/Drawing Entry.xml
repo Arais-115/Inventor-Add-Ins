@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSpecification xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Drawing Entry</Name>
+  <Guid>abfcf00f-214b-419e-a1f7-255388e18944</Guid>
+  <Items>
+    <UiElementSpec xsi:type="ControlTabGroupSpec">
+      <Name>Surface Coating</Name>
+      <Guid>5db117e7-8616-465a-96d5-0218c99ec312</Guid>
+      <Items>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NONE</Name>
+          <Guid>8d37dbbc-12a3-40a5-9903-44b8272a9a26</Guid>
+          <PropertyName>NONE</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>L&amp;W GREY</Name>
+          <Guid>61503c82-f5c5-4633-a4f1-b9b3eb45f251</Guid>
+          <PropertyName>L&amp;W GREY</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>CERTESS DDT</Name>
+          <Guid>89c0bbec-df24-4d34-a8d0-565e7b9d78f9</Guid>
+          <PropertyName>CERTESS DDT</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>BLACK OXIDE</Name>
+          <Guid>89ee5aa5-f8b9-441f-a211-c05e3ea5af33</Guid>
+          <PropertyName>BLACK OXIDE</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>TEFLON</Name>
+          <Guid>2112acbc-9c64-4a39-9f57-191266ebf571</Guid>
+          <PropertyName>TEFLON</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>SAFETY ORANGE</Name>
+          <Guid>84a5f06a-59d8-4515-8fe4-995f88148b86</Guid>
+          <PropertyName>SAFETY ORANGE</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>ANODIZED</Name>
+          <Guid>4f3deaed-bc18-4fe7-a7f4-e866cee4a860</Guid>
+          <PropertyName>ANODIZED</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>OTHER</Name>
+          <Guid>c6e69600-7d27-43a4-ad4c-c0e43e7ca044</Guid>
+          <PropertyName>Other</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>OTHER DESCRIPTION</Name>
+          <Guid>13a39eae-dc6c-4f01-93a5-2e3d47456199</Guid>
+          <PropertyName>Other Description</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+      </Items>
+      <CaptionImage>
+        <BitmapByteArray />
+      </CaptionImage>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="ControlTabGroupSpec">
+      <Name>Descriptions</Name>
+      <Guid>708c5018-ec4e-4da3-a0ef-e4c8657f351e</Guid>
+      <Items>
+        <UiElementSpec xsi:type="BooleanPropertyControlSpec">
+          <Name>Flame Harden</Name>
+          <Guid>4f783275-143d-458b-9c53-86cb5b1419c4</Guid>
+          <PropertyName>FlameHarden</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="BooleanPropertyControlSpec">
+          <Name>Case Harden</Name>
+          <Guid>cb7fc3dc-968e-48f7-ac6d-eae2603ce7e5</Guid>
+          <PropertyName>CaseHarden</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>Rc</Name>
+          <Guid>80914619-eb52-4ab9-a69b-052a57154589</Guid>
+          <PropertyName>Rc</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="BooleanPropertyControlSpec">
+          <Name>Pin Tolerance</Name>
+          <Guid>818fa235-7b55-4072-96d5-00c0a322e3c3</Guid>
+          <PropertyName>PinTolerance</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="BooleanPropertyControlSpec">
+          <Name>3D is Master</Name>
+          <Guid>46bb0415-7f6b-4fa2-af10-178fe334da34</Guid>
+          <PropertyName>CadMasterToggle</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NOTES LINE 1</Name>
+          <Guid>3dabd117-d10c-4729-9df4-46f2212b5987</Guid>
+          <PropertyName>NOTES LINE 1</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NOTES LINE 2</Name>
+          <Guid>7ae2233e-4eb9-4097-85fe-23a7b75b178e</Guid>
+          <PropertyName>NOTES LINE 2</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NOTES LINE 3</Name>
+          <Guid>31231f7a-6f81-4d2b-845c-1b6911572dc5</Guid>
+          <PropertyName>NOTES LINE 3</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NOTES LINE 4</Name>
+          <Guid>1fd472f9-4266-475c-9b3b-cca291e31b66</Guid>
+          <PropertyName>NOTES LINE 4</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="TextPropertyControlSpec">
+          <Name>NOTES LINE 5</Name>
+          <Guid>f910c462-8cc6-4d11-b096-6f59c9b759df</Guid>
+          <PropertyName>NOTES LINE 5</PropertyName>
+          <PropertySetName>Custom</PropertySetName>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+          <Name>Refresh Name</Name>
+          <Guid>11e5525f-90de-43a3-80c0-9a42edeced1f</Guid>
+          <ToolTip>This will check to see if the part/assembly name was changed and refresh data accordingly.</ToolTip>
+          <Image>
+            <BitmapByteArray />
+          </Image>
+          <TextVisible>true</TextVisible>
+          <RuleName>Startup</RuleName>
+          <RuleButtonBehavior>RunRule</RuleButtonBehavior>
+          <Path>Startup.iLogicVb</Path>
+        </UiElementSpec>
+      </Items>
+      <CaptionImage>
+        <BitmapByteArray />
+      </CaptionImage>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="ControlTabGroupSpec">
+      <Name>Shown / Opposite</Name>
+      <Guid>a3652fe0-7a93-443e-a371-57ab934e6d5a</Guid>
+      <Items>
+        <UiElementSpec xsi:type="LabelSpec">
+          <Name>        Only for the legacy naming scheme</Name>
+          <Guid>b6bab922-f22f-44f4-b9ba-36425cc1846c</Guid>
+          <Font>
+            <FamilyName>Tahoma</FamilyName>
+            <Size>11.25</Size>
+            <Bold>true</Bold>
+            <Italic>false</Italic>
+          </Font>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="LabelSpec">
+          <Name>            M-Numbers WITHOUT L, R, or S</Name>
+          <Guid>ea62785a-c77b-48a3-b478-0b9f8d58b0a9</Guid>
+          <Font>
+            <FamilyName>Tahoma</FamilyName>
+            <Size>11.25</Size>
+            <Bold>true</Bold>
+            <Italic>false</Italic>
+          </Font>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="EmptySpaceSpec">
+          <Name>Empty Space 1</Name>
+          <Guid>4ab45ed9-3986-4f53-9e99-aed5864dd6cf</Guid>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+          <Name>SHN/OPP</Name>
+          <Guid>7530c033-9204-42ed-b3f1-2aab78c43919</Guid>
+          <Image>
+            <BitmapByteArray />
+          </Image>
+          <TextVisible>true</TextVisible>
+          <RuleName>IDW_Opp</RuleName>
+          <RuleButtonBehavior>RunRule</RuleButtonBehavior>
+          <Path>IDW_Opp.iLogicVb</Path>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+          <Name>Single Detail</Name>
+          <Guid>37e8ac81-5feb-4b4b-921d-70956cdf5c3e</Guid>
+          <Image>
+            <BitmapByteArray />
+          </Image>
+          <TextVisible>true</TextVisible>
+          <RuleName>IDW_Single</RuleName>
+          <RuleButtonBehavior>RunRule</RuleButtonBehavior>
+          <Path>IDW_Single.iLogicVb</Path>
+        </UiElementSpec>
+        <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+          <Name>Refresh iProperties</Name>
+          <Guid>a71944ee-90f5-4e7c-8909-948a66ff530d</Guid>
+          <Image>
+            <BitmapByteArray />
+          </Image>
+          <TextVisible>true</TextVisible>
+          <RuleName>Refresh</RuleName>
+          <RuleButtonBehavior>RunRule</RuleButtonBehavior>
+          <Path>Refresh.iLogicVb</Path>
+        </UiElementSpec>
+      </Items>
+      <CaptionImage>
+        <BitmapByteArray />
+      </CaptionImage>
+    </UiElementSpec>
+  </Items>
+  <StyleAndSkinName>
+    <StyleName>Default</StyleName>
+  </StyleAndSkinName>
+  <AllowCustomization>true</AllowCustomization>
+  <PredefinedButtons>Done</PredefinedButtons>
+  <Modal>false</Modal>
+</FormSpecification>

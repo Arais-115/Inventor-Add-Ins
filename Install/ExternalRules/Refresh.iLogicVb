@@ -1,0 +1,59 @@
+﻿Public Sub Main()
+Dim oMDoc As Document = ThisDrawing.ModelDocument
+Dim oDesignValue As String
+Dim oFilenameValue As String
+Dim oppDesc As String
+
+oDesignValue = oMDoc.PropertySets("Design Tracking Properties").Item("Description").Value
+oFilenameValue = IO.Path.GetFileNameWithoutExtension(oMDoc.FullFileName)
+
+
+If String.IsNullOrEmpty(oFilenameValue) Then
+	MessageBox.Show("In order to change, you must save the drawing first", "Please save first", MessageBoxButtons.OK)
+	Exit Sub
+Else If Len(oFilenameValue) < 8 Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oFilenameValue & vbLf & "Should be MXXXX-XXXX-XXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+Else If oFilenameValue.Contains("-") = False Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & oFilenameValue & vbLf & "Should be MXXXX-XXXX-XXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End If
+
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+'Try
+'	prop = customPropertySet.Item("DetailFULL")
+'	prop = customPropertySet.Item("DET#")
+'	prop = customPropertySet.Item("OPP#")
+'	prop = customPropertySet.Item("OPPFull")
+'	prop = customPropertySet.Item("DrawingOPP")
+'	prop = customPropertySet.Item("shn/OPP")
+'	prop = customPropertySet.Item("Opposite Description")
+'Catch
+'	MessageBox.Show("Drawing not to Standard" & vbLf & "Missing custom iProperties", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+'	Exit Sub
+'End Try
+
+iProperties.Value("Project", "Description") = oDesignValue
+oppDesc = iProperties.Value("Custom", "Opposite Description") 
+If String.IsNullOrEmpty(oppDesc) Then
+		iLogicVb.RunExternalRule("IDW_Single") 'In no entry for OppDesc then run Single
+	Else
+		iLogicVb.RunExternalRule("IDW_Opp") 'Else Opp
+	End If
+	
+''Dim oFilenameValue As String = 
+'Dim oFilenameValue As String = IO.Path.GetFileNameWithoutExtension(oMDoc.FullFileName)
+''Dim o
+''Desc = iProperties.Value("Project", "Description")
+
+'Dim oDoc As Document = ThisApplication.ActiveDocument
+'Dim oPropSets As PropertySets = oDoc.PropertySets
+'Dim oPropSet As PropertySet = oPropSets.Item("Design Tracking Properties")
+''Dim oDesc As [Property] = oPropSet.Item("Description")
+
+'oPropSet.i
+
+'MessageBox.Show(oDesc.ToString)
+
+
+End Sub

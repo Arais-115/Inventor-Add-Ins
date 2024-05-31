@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSpecification xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>iLogicBrowserUiFormSpecification</Name>
+  <Guid>ba578f7a-a1f1-4e7b-8376-29912d88cf0e</Guid>
+  <Items>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Purchased Item</Name>
+      <Guid>e3551740-0d6a-4f5d-a9e6-9e6508249bb5</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>iProperties Form</Name>
+      <Guid>c08d44a9-8ead-4497-a451-a498c301e02e</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Drawing Entry</Name>
+      <Guid>9a828127-383f-4033-87d8-5c3909e6b459</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>iProperties General</Name>
+      <Guid>c0072607-c0f2-4c8f-bb1c-5147a41199df</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Phantom</Name>
+      <Guid>bb22949e-1e27-4c1e-a97d-ec094802cfa7</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+    <UiElementSpec xsi:type="FormButtonControlSpec">
+      <Name>Purchased iProperties</Name>
+      <Guid>ca2a1ff5-17c7-4400-b013-c88912c21493</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+    </UiElementSpec>
+  </Items>
+  <StyleAndSkinName>
+    <StyleName>Default</StyleName>
+  </StyleAndSkinName>
+  <AllowCustomization>false</AllowCustomization>
+  <PredefinedButtons>None</PredefinedButtons>
+  <Modal>false</Modal>
+  <IsLauncherPage>true</IsLauncherPage>
+</FormSpecification>

@@ -1,0 +1,56 @@
+﻿Sub Main()
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+On Error GoTo ErrorHandle:
+Dim FlHr As String, PinTol As String
+Dim CsHr As String
+FlHr = iProperties.Value("Custom","FlameHarden").ToString
+PinTol = iProperties.Value("Custom", "PinTolerance").ToString
+PinTolCheck = iProperties.Value("Custom", "PIN.T").ToString
+CsHr = iProperties.Value("Custom", "CaseHarden").ToString
+CadMa = iProperties.Value("Custom","CadMasterToggle").ToString
+'Anodized = iProperties.Value("Custom", "CaseHarden").ToString
+'BlOxide
+'Certess
+'Grey
+'Orange
+
+If FlHr = "True" Then
+	iProperties.Value("Custom", "FL.H") = "FLAME HARDEN WHERE SHOWN TO Rc "
+	iProperties.Value("Custom", "FL.H2") = " TO DEPTH OF 0.5-0.7mm"
+ElseIf FlHr = "False" Then
+	iProperties.Value("Custom", "FL.H") = ""
+	iProperties.Value("Custom", "FL.H2") = ""
+End If
+
+If CsHr = "True" Then
+	iProperties.Value("Custom", "CS.H") = "CASE HARDEN TO Rc"
+	iProperties.Value("Custom", "CS.H2") = " TO DEPTH OF 0.5-0.7mm"
+ElseIf CsHr = "False" Then
+	iProperties.Value("Custom", "CS.H") = ""
+	iProperties.Value("Custom", "CS.H2") = ""
+End If
+
+
+If PinTol = "True" Then '" & vbClRf &  "
+	iProperties.Value("Custom", "NOTES LINE 1") = "ALL MACHINED SURFACES TO FLAT,PARALLEL, AND PERPINDICULAR TO "
+	 iProperties.Value("Custom", "NOTES LINE 2") = "WITHIN 0.015 T.I.R. TO DATUMS A And B And CONCENTRIC To WITHIN 0.03 T.I.R"
+	   iProperties.Value("Custom", "PIN.T") = ""
+	 
+ElseIf PinTol = "False" And PinTolCheck = "" Then
+	     iProperties.Value("Custom", "PIN.T") = "True"
+		 iProperties.Value("Custom", "NOTES Line 1") = ""
+	 iProperties.Value("Custom", "NOTES LINE 2") = ""
+End If
+
+
+If CadMa = "True" Then '" & vbClRf &  "
+	 iProperties.Value("Custom", "CadMaster") = "USE 3D CAD MODEL FOR PRECISE SURFACE AND BLOCK SHAPE DATA"	 
+ElseIf CadMa = "False" Then
+	 iProperties.Value("Custom", "CadMaster") = ""
+End If
+Exit Sub
+
+ErrorHandle :
+MessageBox.Show("This drawing file is not using the current Axis Design template", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error) 
+End Sub
+

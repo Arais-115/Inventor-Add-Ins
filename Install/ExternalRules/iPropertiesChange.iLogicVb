@@ -1,0 +1,41 @@
+﻿Private Sub Main()
+Dim oDoc As Document = ThisApplication.ActiveDocument
+Dim DocType = oDoc.DocumentType
+
+If DocType  = DocumentTypeEnum.kAssemblyDocumentObject Then
+    'it's an assembly file
+Else If DocType = DocumentTypeEnum.kPartDocumentObject Then
+    'it's a part file
+Else If DocType = DocumentTypeEnum.kDrawingDocumentObject Then
+    MessageBox.Show("Cannot open in a drawing")
+	Exit Sub
+End If
+On Error GoTo Err
+'Check To see If In Assembly Or Part view
+
+Dim bom As String
+bom = oDoc.ComponentDefinition.BOMStructure.ToString
+Select Case bom
+
+Case "51974" 'inseparable -> Machined Form
+iLogicForm.ShowGlobal("iProperties General")
+
+Case "51970" 'normal -> Machined Form
+iLogicForm.ShowGlobal("iProperties General")
+
+Case "51971" 'phantom -> No Form
+iLogicForm.ShowGlobal("Phantom")
+
+Case "51973" 'purchased -> Purch Form
+iLogicForm.ShowGlobal("Purchased iProperties")
+
+Case "51972" 'reference -> Machined Form
+iLogicForm.ShowGlobal("iProperties General")
+	
+Case Else
+iLogicForm.ShowGlobal("iProperties General")	
+End Select
+Exit Sub
+Err :
+MessageBox.Show("Unable to open iProperties editing form", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+End Sub

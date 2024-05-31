@@ -1,0 +1,52 @@
+﻿Private Sub Main()
+Dim oDoc As Document = ThisApplication.ActiveDocument
+On Error GoTo Err
+
+DocType = ThisDoc.Document.DocumentType
+
+If DocType  = DocumentTypeEnum.kAssemblyDocumentObject Then
+'    MessageBox.Show("Cannot modify BOM Structure of an Assembly", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+'	Exit Sub
+Else If DocType = DocumentTypeEnum.kPartDocumentObject Then
+    'it's a part file
+Else If DocType = DocumentTypeEnum.kDrawingDocumentObject Then
+     MessageBox.Show("Cannot modify BOM Structure of an Drawing", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+	Exit Sub
+End If
+
+Dim res As String
+oMyParameter = ThisApplication.ActiveDocument.ComponentDefinition.Parameters.UserParameters
+oParameter = oMyParameter.AddByValue("Struct", "Machine", UnitsTypeEnum.kTextUnits) 'Set MultiValue.Setlist, Had to set it I guess?
+'"Default", , "Varies"
+MultiValue.SetList("Struct", "Machined", "Phantom", "Purchased", "Reference", "Weldment") 'First is Name of list, entries
+'Current BOM Structure is default?
+res = InputListBox("Select a BOM Structure", MultiValue.List("Struct"), Struct , Title := "BOM Structure Change", ListName := "BOM Structure Types") 'Get input from Box 
+
+
+Select Case res 'Select Case and Set New Structure
+Case "Machined"
+	oDoc.ComponentDefinition.BOMStructure = BOMStructureEnum.kNormalBOMStructure
+	iLogicForm.ShowGlobal("iProperties General")
+Case "Phantom"
+	oDoc.ComponentDefinition.BOMStructure = BOMStructureEnum.kPhantomBOMStructure
+	iLogicForm.ShowGlobal("Phantom")
+Case "Purchased"
+	oDoc.ComponentDefinition.BOMStructure = BOMStructureEnum.kPurchasedBOMStructure
+	iLogicForm.ShowGlobal("Purchased iProperties")
+Case "Referance"
+	oDoc.ComponentDefinition.BOMStructure = BOMStructureEnum.kReferenceBOMStructure
+	iLogicForm.ShowGlobal("iProperties General")
+Case "Weldment"
+	oDoc.ComponentDefinition.BOMStructure = BOMStructureEnum.kInseparableBOMStructure
+	iLogicForm.ShowGlobal("iProperties General")
+Case Else 'In case error
+Exit Sub
+End Select
+Exit Sub 'Exit before error check
+
+Err :
+MessageBox.Show("Unable to switch BOM Structure", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+End Sub
+
+

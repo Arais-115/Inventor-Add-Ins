@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FormSpecification xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Name>Phantom</Name>
+  <Guid>a6f46017-2eca-410a-bc75-1852ec813e3e</Guid>
+  <Items>
+    <UiElementSpec xsi:type="iLogicExternalRuleControlSpec">
+      <Name>Change BOM Structure</Name>
+      <Guid>bf568d3d-d30f-4ce4-bbdc-194ca110cb0d</Guid>
+      <Image>
+        <BitmapByteArray />
+      </Image>
+      <TextVisible>true</TextVisible>
+      <RuleName>BOMStructChange</RuleName>
+      <RuleButtonBehavior>CloseAndRunRule</RuleButtonBehavior>
+      <Path>BOMStructChange.iLogicVb</Path>
+    </UiElementSpec>
+  </Items>
+  <StyleAndSkinName>
+    <StyleName>Default</StyleName>
+  </StyleAndSkinName>
+  <AllowCustomization>true</AllowCustomization>
+  <PredefinedButtons>Done</PredefinedButtons>
+  <Modal>false</Modal>
+</FormSpecification>

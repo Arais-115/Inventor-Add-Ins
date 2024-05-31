@@ -1,0 +1,66 @@
+﻿Private Sub Main ()
+Dim Filename As String
+Dim FullName As String 
+Dim OppName As String
+Dim Desc As String
+Dim subOppName As String
+Dim subFullName As String
+Dim subDesc As String
+Dim chk As String
+Dim result As String
+
+Filename = ThisDoc.FileName(False)
+FullName = Filename
+
+If String.IsNullOrEmpty(Filename) Then
+	MessageBox.Show("In order to change, you must save the drawing first", "Please save first", MessageBoxButtons.OK)
+	Exit Sub
+Else If Len(Filename) < 8 Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & Filename & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+Else If Filename.Contains("-") = False Then
+	MessageBox.Show("Filename not to standard" & vbLf & "Current Filename is: " & Filename & vbLf & "Should be MXXXX-XXXXXXX-XXXXX or similar" , "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+	Exit Sub
+End If
+
+Desc = iProperties.Value("Project", "Description")
+customPropertySet = ThisDoc.Document.PropertySets.Item("Inventor User Defined Properties")
+'Try
+'	prop = customPropertySet.Item("DetailFULL")
+'	prop = customPropertySet.Item("DET#")
+'	prop = customPropertySet.Item("OPP#")
+'	prop = customPropertySet.Item("OPPFull")
+'	prop = customPropertySet.Item("DrawingOPP")
+'	prop = customPropertySet.Item("shn/OPP")
+'	prop = customPropertySet.Item("Opposite Description")
+'Catch
+'	MessageBox.Show("Drawing not to Standard" & vbLf & "Missing custom iProperties", "Cannot Run Rule", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+'	Exit Sub
+'End Try
+	
+	
+
+If Desc.IndexOf("shn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 Then
+   subDesc = Replace(Desc, "shn", "OPP", 1, , CompareMethod.Text)
+   iProperties.Value("Custom", "Opposite Description") = subDesc
+Else If Desc.IndexOf("shwn", 0, StringComparison.CurrentCultureIgnoreCase) > -1 
+   subDesc = Replace(Desc, "shwn", "OPP", 1, , CompareMethod.Text)
+   iProperties.Value("Custom", "Opposite Description") = subDesc
+Else 
+   MessageBox.Show("Description " & Desc & " not to standard" & vbLf & "'SHN' is required in description", "Description Not to Standard", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+   Exit Sub
+End If
+
+iProperties.Value("Custom", "DetailFull") = FullName
+subFullName = FullName.Substring(InStrRev(FullName, "-"))
+iProperties.Value("Custom", "DET#") =  subFullName 
+Dim sbOppName As New System.Text.StringBuilder(Filename)
+sbOppName(Filename.Length - 4) = "1"c
+OppName = sbOppName.ToString
+subOppName = OppName.Substring(InStrRev(OppName, "-")) 
+iProperties.Value("Custom", "OPP#") = subOppName
+iProperties.Value("Custom", "OPPFull") = OppName
+iProperties.Value("Custom", "DrawingOPP") = "-" & subOppName
+iProperties.Value("Custom", "Shn/OPP") = "Yes"
+
+End Sub
